@@ -1,9 +1,9 @@
 export class ProfileData {
-	name:string;
-	spotifyProfile:string;
-	imageURL:string;
+	name;
+	spotifyProfile;
+	imageURL;
 
-	constructor(objectModel:{}) {
+	constructor(objectModel) {
 		this.name = objectModel['display_name'];
 		this.spotifyProfile = objectModel['external_urls']['spotify'];
 		if(objectModel['images'].length > 0) {

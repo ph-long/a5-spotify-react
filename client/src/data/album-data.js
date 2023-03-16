@@ -2,10 +2,10 @@ import { ResourceData } from './resource-data';
 import { ArtistData } from './artist-data';
 
 export class AlbumData extends ResourceData {
-	genres:string[];
-	artists:ArtistData[];
+	genres;
+	artists;
 
-	constructor(objectModel:{}) {
+	constructor(objectModel) {
 		super(objectModel);
 		this.category="album";
 

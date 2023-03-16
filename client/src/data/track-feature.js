@@ -3,11 +3,11 @@ import * as chroma from 'chroma-js';
 export class TrackFeature {
 	static FeatureTypes = ['danceability', 'energy', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence'];
 
-	id:string;
-	name:string;
-	percent:number;
+	id;
+	name;
+	percent;
 
-	constructor(feature:string, percent:number) {
+	constructor(feature, percent) {
 		this.name = feature;
 		this.percent = percent;
 	}

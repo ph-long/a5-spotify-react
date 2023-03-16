@@ -1,11 +1,11 @@
-export abstract class ResourceData {
-	category:string = "unknown";
-	name:string;
-	imageURL:string;
-	id:string;
-	url:string;
+export class ResourceData {
+	category = "unknown";
+	name;
+	imageURL;
+	id;
+	url;
 
-	constructor(objectModel:{}) {
+	constructor(objectModel) {
 		this.name = objectModel['name'];
 		this.id = objectModel['id'];
 		if(objectModel['images'] && objectModel['images'].length > 0) {

@@ -3,11 +3,11 @@ import { ArtistData } from './artist-data';
 import { AlbumData } from './album-data';
 
 export class TrackData extends ResourceData {
-	album:AlbumData;
-	artists:ArtistData[];
-	duration_ms:number;
+	album;
+	artists;
+	duration_ms;
 
-	constructor(objectModel:{}) {
+	constructor(objectModel) {
 		super(objectModel);
 		this.category = "track";
 
@@ -24,8 +24,8 @@ export class TrackData extends ResourceData {
 
 	//Return duration_ms in X:XX form (and drop ms component)
 	get durationStr() {
-		var minutes:number = this.duration_ms / 60000; //60 sec/min * 100ms/sec
-		var seconds:number = (this.duration_ms) / 1000 % 60; // 100ms/sec, get remainder
+		var minutes = this.duration_ms / 60000; //60 sec/min * 100ms/sec
+		var seconds = (this.duration_ms) / 1000 % 60; // 100ms/sec, get remainder
 		return minutes.toFixed(0) + ':' + seconds.toFixed(0).padStart(2, '0');
 	}
 
