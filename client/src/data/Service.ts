@@ -60,7 +60,6 @@ export class SpotifyService {
               return new TrackData(item);
             })
           }
-        console.log(resources)
         return resources
         })
       return resources
@@ -100,18 +99,25 @@ export class SpotifyService {
     //TODO: use the albums for an artist endpoint to make a request to express.
   }
 
-  getAlbum(albumId:string):Promise<AlbumData> {
+  async getAlbum(albumId:string) {
     //TODO: use the album endpoint to make a request to express.
-    return this.sendRequestToExpress('/album/' + albumId).then((data) => {
-      return new AlbumData(data);
+    let res;
+    await axios.get(this.expressBaseUrl + '/album/' + albumId).then((data) => {
+      data = data.data
+      res = new AlbumData(data)
+      return res;
     })
+    return res
   }
 
-  getTracksForAlbum(albumId:string) {
-    return this.sendRequestToExpress('/album-tracks/' + albumId).then((data) => {
-      const tracks = data["items"].map((item) => {return new TrackData(item)})
+  async getTracksForAlbum(albumId:string) {
+    let tracks;
+    await axios.get(this.expressBaseUrl +'/album-tracks/' + albumId).then((data) => {
+      data = data.data
+      tracks = data["items"].map((item) => {return new TrackData(item)})
       return tracks
     })
+    return tracks;
     //TODO: use the tracks for album endpoint to make a request to express.
   }
 

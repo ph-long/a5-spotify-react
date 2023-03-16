@@ -4,7 +4,7 @@ import Thermometer from './Thermometer';
 const TrackPage = (props) => {
     return (
         <div>
-            <Thermometer/>
+            <p>HERE</p>
         </div>
     )
 };

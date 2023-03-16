@@ -10,8 +10,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
-  const [id, setId] = useState(null) // stores track/artist/album id
-  const [pageState, sestPageState] = useState("home") // set page states
+  const [id, setId] = useState("7ayBZIe1FHkNv0T5xFCX6F") // stores track/artist/album id
+  const [pageState, setPageState] = useState("album") // set page states
 
 
   return (
@@ -50,15 +50,15 @@ function App() {
           </ul>
           </Navbar>
           <About/>
-          <Seach/>
+          <Seach setId = {setId} setPageState = {setPageState}/>
       </div> :
         pageState === "album" ?
         <div>
-          <AlbumPage/>
+          <AlbumPage id={id} setId = {setId} setPageState = {setPageState}/>
         </div> :
         pageState === "artist" ?
         <div>
-          <ArtistPage/>
+          <ArtistPage />
         </div> :
         pageState === "track" ?
         <div>

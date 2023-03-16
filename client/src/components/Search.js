@@ -28,11 +28,12 @@ const Search = (props) => {
                 <select value={searchCategory} onChange={e=> setSearchCategory(e.target.value)}>
                     {serachCategories.map((name, index) => {return <option key={index}>{name}</option>})}
                 </select>
-                <button class="btn btn-light" onClick={search} type='button'>Search</button>
+                
             </form>
+            <button class="btn btn-light" onClick={search} type='button'>Search</button>
             {searchCategory !== "track" ?
             <Carousel data = {resources}/>
-            : <TrackList data = {resources}/>}
+            : <TrackList data = {resources} hideArtist = {false} hideAlbum = {false} setId = {props.setId} setPageState = {props.setPageState}/>}
         </div>
     )
 };
