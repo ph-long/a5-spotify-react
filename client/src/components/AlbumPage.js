@@ -6,14 +6,13 @@ const AlbumPage = (props) => {
     const albumId = React.useRef(props.id)
     const [album, setAlbum] = useState()
     const [tracks, setTrack] = useState()
-    console.log(albumId)
 
     useEffect(() => {        
         const service = new SpotifyService()
 
         service.getAlbum(albumId.current).then((response) => {
             setAlbum(response)
-            console.log(album)
+            // console.log(album)
         })
         service.getTracksForAlbum(albumId.current).then((response) => {
             setTrack(response)
@@ -25,7 +24,7 @@ const AlbumPage = (props) => {
     return (
         <div>
             { album ?
-            <div>
+            <div class="group">
                 <div class="col-6">
                     <h1>{album.name}</h1>
                     <img id="albumImg" src={album.imageURL}></img>
@@ -34,7 +33,7 @@ const AlbumPage = (props) => {
                     })}
                     <p><a class="btn btn-light" href = {album.url} role="button" target="_blank" >Open {album.name} on Spotify</a></p>
                 </div>
-                <div class="col-6">
+                <div>
                     <h3>Album Tracks</h3>
                     <TrackList data={tracks} hideArtist = {true} hideAlbum = {true} setId = {props.setId} setPageState = {props.setPageState}/>
                 </div>

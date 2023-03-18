@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import Carousel from './Carousel';
+import Carousel from './CarouselComponent';
 import TrackList from './TrackList';
 import { SpotifyService } from '../data/Service.ts';
 

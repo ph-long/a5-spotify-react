@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
+import { Outlet, Link } from "react-router-dom";
 
 const TrackList = (props) => {
     let tracks = props.data
     const [hideArtist, setHideArtist] = useState(props.hideArtist)
     const [hideAlbum, setHideAlbum] = useState(props.hideAlbum)
-    console.log(tracks)
 
     const trackClicked = (id) =>{
         props.setId(id)
@@ -40,11 +40,11 @@ const TrackList = (props) => {
                             return <tr>
                             <td>{index + 1}</td>
                             <td>
-                                <a onClick={() => trackClicked(value.id)}>{value.name}</a>
+                                <Link to="/track">{value.name}</Link>
                             </td>
                             <td>{value.durationStr}</td>
                             {!hideArtist ? <td><a onClick={() => artistClicked(value.primaryArtist.url)}>{value.primaryArtist.name}</a></td> : null}
-                            {!hideAlbum ? <td><a onClick={() => albumClicked(value.album.url)}>{value.album.name}</a></td> : null}
+                            {!hideAlbum ? <td><Link to="/album" onClick={() => albumClicked(value.album.id)}>{value.album.name}</Link></td> : null}
                             </tr>
                         })
                     }

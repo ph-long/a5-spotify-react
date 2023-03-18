@@ -17,13 +17,8 @@ const About = (props) => {
             setName(data.name)
             setProfileLink(data.spotifyProfile)
             setProfilePic(data.imageURL)
-            console.log(data)
             return data;
           }).catch((error) => console.log(error))
-        // console.log(data)
-        // setName(data.name)
-        // setProfileLink(data.spotifyProfile)
-        // setProfilePic(data.imageURL)
     }   
 
     return (

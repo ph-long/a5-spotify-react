@@ -1,0 +1,8 @@
+.group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.search {
+    margin-left: 20%;
+}
