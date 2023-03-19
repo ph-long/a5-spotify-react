@@ -40,10 +40,10 @@ const TrackList = (props) => {
                             return <tr>
                             <td>{index + 1}</td>
                             <td>
-                                <Link to="/track">{value.name}</Link>
+                                <Link to="/track" onClick={() => trackClicked(value.id)}>{value.name}</Link>
                             </td>
                             <td>{value.durationStr}</td>
-                            {!hideArtist ? <td><a onClick={() => artistClicked(value.primaryArtist.url)}>{value.primaryArtist.name}</a></td> : null}
+                            {!hideArtist ? <td><Link to="/artist" onClick={() => artistClicked(value.primaryArtist.id)}>{value.primaryArtist.name}</Link></td> : null}
                             {!hideAlbum ? <td><Link to="/album" onClick={() => albumClicked(value.album.id)}>{value.album.name}</Link></td> : null}
                             </tr>
                         })
