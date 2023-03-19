@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import TrackList from './TrackList';
 import {SpotifyService} from '../data/Service.ts'
+import { Link } from 'react-router-dom';
 
 const AlbumPage = (props) => {
     const albumId = React.useRef(props.id)
@@ -20,16 +21,20 @@ const AlbumPage = (props) => {
         })}
     , [])
 
+    const artistClicked = (id) => {
+        props.setId(id)
+    }
     
     return (
         <div>
             { album ?
             <div class="group">
                 <div class="col-6">
+                    <Link to="/"><h2>Home</h2></Link>
                     <h1>{album.name}</h1>
                     <img id="albumImg" src={album.imageURL}></img>
                     {album.artists.map((value, index) => {
-                        return <p>Artist: <a>{value.name}</a></p>
+                        return <p>Artist: <Link to="/artist" onClick={() => artistClicked(value.id)}>{value.name}</Link></p>
                     })}
                     <p><a class="btn btn-light" href = {album.url} role="button" target="_blank" >Open {album.name} on Spotify</a></p>
                 </div>

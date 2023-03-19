@@ -139,7 +139,8 @@ export class SpotifyService {
     let res;
     await axios.get(this.expressBaseUrl +'/track/' + trackId).then((data) => {
       data = data.data
-      return new TrackData(data);
+      res = new TrackData(data)
+      return res;
     })
     return res;
   }

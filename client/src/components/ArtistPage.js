@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import Carousel from './CarouselComponent';
 import {SpotifyService} from '../data/Service.ts'
+import TrackList from './TrackList';
+import CarouselComponent from './CarouselComponent';
+import { Link } from 'react-router-dom';
 
 const ArtistPage = (props) => {
     const artistId = React.useRef(props.id)
@@ -28,7 +31,42 @@ const ArtistPage = (props) => {
 
     return (
         <div>
-            <p>{artistId.current}</p>
+            {
+                artist ?
+                <div>
+                    <Link to="/"><h2>Home</h2></Link>
+                    <div class='row'>
+                        <div class="col-4">
+                            <h1>{artist.name}</h1>
+                            <img src = {artist.imageURL}/>
+                            <p>
+                                <a class="btn btn-light" href = {artist.url} role="button" target="_blank">Open {artist.name} on Spotify</a>
+                            </p>
+                        </div>
+                        <div class="col-2">
+                            <h3>Genres</h3>
+                            <ul>
+                                {artist.genres.map((value, index) => {return (<li>{value}</li>)})}
+                            </ul>
+                        </div> 
+                        <div class="col-4">
+                            <h3>{artist.name}'s Top Tracks</h3>
+                            <TrackList data = {topTracks} hideArtist = {true} hideAlbum = {true} setId = {props.setId} setPageState = {props.setPageState}/>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-6">
+                            <h3>{artist.name}'s Albums</h3>
+                            <CarouselComponent data = {albums} setId = {props.setId}/>
+                        </div>
+                        <div class="col-6">
+                            <h3>Similar Artists</h3>
+                            <CarouselComponent data = {relatedArtist} setId = {props.setId}/>
+                        </div>
+                    </div>
+                </div>
+                 : null
+            }
         </div>
     )
 };

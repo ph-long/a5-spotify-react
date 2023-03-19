@@ -32,7 +32,7 @@ const Search = (props) => {
             </form>
             <button class="btn btn-light" onClick={search} type='button'>Search</button>
             {searchCategory !== "track" ?
-            <CarouselComponent data = {resources}/>
+            <CarouselComponent data = {resources} setId = {props.setId}/>
             : <TrackList data = {resources} hideArtist = {false} hideAlbum = {false} setId = {props.setId} setPageState = {props.setPageState}/>}
         </div>
     )
