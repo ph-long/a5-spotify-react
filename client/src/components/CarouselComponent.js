@@ -4,13 +4,18 @@ import CarouselItem from './CarouselItem';
 
 const CarouselComponent = (props) => {
     const carouselId = useRef(props.id)
-    const resources = useRef(props.data)
+    const resources = props.data
     return (
-        <div>
-            <Carousel>
-                <CarouselItem/>
-            </Carousel>
-        </div>
+        <Carousel>
+            {resources.map((value, index) => {
+                return (
+                    <Carousel.Item>
+                        <img src={value.imageURL}/>
+                        <Carousel.Caption><p>{value.name}</p></Carousel.Caption>
+                    </Carousel.Item>
+                )
+            })}
+        </Carousel>
     )
 };
-export default Carousel;
+export default CarouselComponent;

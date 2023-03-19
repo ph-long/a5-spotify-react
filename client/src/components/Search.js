@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import Carousel from './CarouselComponent';
+import CarouselComponent from './CarouselComponent';
 import TrackList from './TrackList';
 import { SpotifyService } from '../data/Service.ts';
 
@@ -32,7 +32,7 @@ const Search = (props) => {
             </form>
             <button class="btn btn-light" onClick={search} type='button'>Search</button>
             {searchCategory !== "track" ?
-            <Carousel data = {resources}/>
+            <CarouselComponent data = {resources}/>
             : <TrackList data = {resources} hideArtist = {false} hideAlbum = {false} setId = {props.setId} setPageState = {props.setPageState}/>}
         </div>
     )
