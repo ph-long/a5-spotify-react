@@ -67,35 +67,48 @@ export class SpotifyService {
       
   }
 
-  getArtist(artistId:string):Promise<ArtistData> {
-    return this.sendRequestToExpress('/artist/' + artistId).then((data) => {
-      return new ArtistData(data);
+  async getArtist(artistId:string) {
+    let res;
+    await axios.get(this.expressBaseUrl +'/artist/' + artistId).then((data) => {
+      data = data.data
+      res = new ArtistData(data)
+      return res;
     })
+    return res;
     //TODO: use the artist endpoint to make a request to express.
     //Again, you may need to encode the artistId.
   }
 
-  getRelatedArtists(artistId:string){
-    return this.sendRequestToExpress('/artist-related-artists/' + artistId).then((data) => {
-      const artists = data["artists"].map((item) => {return new ArtistData(item)})
+  async getRelatedArtists(artistId:string){
+    let artists;
+    await axios.get(this.expressBaseUrl +'/artist-related-artists/' + artistId).then((data) => {
+      data = data.data
+      artists = data["artists"].map((item) => {return new ArtistData(item)})
       return artists
     })
+    return artists;
     //TODO: use the related artist endpoint to make a request to express and return an array of artist data.
   }
 
-  getTopTracksForArtist(artistId:string):Promise<TrackData[]> {
-    return this.sendRequestToExpress('/artist-top-tracks/' + artistId).then((data) => {
-      const tracks = data["tracks"].map((item) => {return new TrackData(item)})
+  async getTopTracksForArtist(artistId:string){
+    let tracks
+    await axios.get(this.expressBaseUrl +'/artist-top-tracks/' + artistId).then((data) => {
+      data = data.data
+      tracks = data["tracks"].map((item) => {return new TrackData(item)})
       return tracks
     })
+    return tracks
     //TODO: use the top tracks endpoint to make a request to express.
   }
 
-  getAlbumsForArtist(artistId:string):Promise<AlbumData[]> {
-    return this.sendRequestToExpress('/artist-albums/' + artistId).then((data) => {
-      const albums = data["items"].map((item) => {return new AlbumData(item)})
+  async getAlbumsForArtist(artistId:string) {
+    let albums
+    await axios.get(this.expressBaseUrl +'/artist-albums/' + artistId).then((data) => {
+      data = data.data
+      albums = data["items"].map((item) => {return new AlbumData(item)})
       return albums
     })
+    return albums
     //TODO: use the albums for an artist endpoint to make a request to express.
   }
 
@@ -121,17 +134,21 @@ export class SpotifyService {
     //TODO: use the tracks for album endpoint to make a request to express.
   }
 
-  getTrack(trackId:string):Promise<TrackData> {
+  async getTrack(trackId:string){
     //TODO: use the track endpoint to make a request to express.
-    return this.sendRequestToExpress('/track/' + trackId).then((data) => {
+    let res;
+    await axios.get(this.expressBaseUrl +'/track/' + trackId).then((data) => {
+      data = data.data
       return new TrackData(data);
     })
+    return res;
   }
 
-  getAudioFeaturesForTrack(trackId:string) {
+  async getAudioFeaturesForTrack(trackId:string) {
     //TODO: use the audio features for track endpoint to make a request to express.
-    return this.sendRequestToExpress('/track-audio-features/' + trackId).then((data) => {
-      const trackFeatures: TrackFeature[] = [];
+    const trackFeatures: TrackFeature[] = [];
+    await axios.get(this.expressBaseUrl +'/track-audio-features/' + trackId).then((data) => {
+      data = data.data
       for (let key in data) {
         if (TrackFeature.FeatureTypes.includes(key)) {
           trackFeatures.push(new TrackFeature(key, data[key]))
@@ -139,5 +156,6 @@ export class SpotifyService {
       }
       return trackFeatures;
     })
+    return trackFeatures;
   }
 }

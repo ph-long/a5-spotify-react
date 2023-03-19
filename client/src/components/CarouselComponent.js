@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from './CarouselItem';
 
 const CarouselComponent = (props) => {
-    const [resources, setResource] = useState(props.data)
+    const carouselId = useRef(props.id)
+    const resources = useRef(props.data)
     return (
         <div>
             <Carousel>

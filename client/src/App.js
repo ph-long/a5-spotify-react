@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 // react router
 function App() {
-  const [id, setId] = useState("") // stores track/artist/album id
+  const [id, setId] = useState("2tIP7SsRs7vjIcLrU85W8J") // stores track/artist/album id
   const [pageState, setPageState] = useState("home") // set page states
 
 
