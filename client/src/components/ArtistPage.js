@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import Carousel from './CarouselComponent';
 import {SpotifyService} from '../data/Service.ts'
 import TrackList from './TrackList';
 import CarouselComponent from './CarouselComponent';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const ArtistPage = (props) => {
-    const artistId = React.useRef(props.id)
+    const artistId = React.useRef(window.location.pathname.substring(8))
     const [artist, setArtist] = useState()
     const [relatedArtist, setRelatedArtist] = useState()
     const [topTracks, setTopTracks] = useState()
@@ -34,7 +34,7 @@ const ArtistPage = (props) => {
             {
                 artist ?
                 <div>
-                    <Link to="/"><h2>Home</h2></Link>
+                    <Link to="/"><Button variant="outline-primary">Home</Button></Link>
                     <div class='row'>
                         <div class="col-4">
                             <h1>{artist.name}</h1>

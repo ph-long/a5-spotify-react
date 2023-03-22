@@ -1,20 +1,14 @@
 import React, {useState, useRef} from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
-import CarouselItem from './CarouselItem';
 
 const CarouselComponent = (props) => {
     const carouselId = useRef(props.id)
     const resources = props.data
 
-    const imageClicked = (id) => {
-        props.setId(id)
-    }
-
     const carouselStyle = {
         width: "400px"
     }
-
 
 
     return (
@@ -23,11 +17,11 @@ const CarouselComponent = (props) => {
             {resources.map((value, index) => {
                 return (
                     <Carousel.Item>
-                        {value.category === "artist" ? 
-                            <Link to="/artist" onClick={() => imageClicked(value.id)}>
-                                <img src={value.imageURL} onClick={() => imageClicked(value.id)}/>
+                        {value.category === "artist" ?
+                            <Link to={`/artist/${value.id}`}>
+                                <img src={value.imageURL}/>
                             </Link> : 
-                            <Link to="/album" onClick={() => imageClicked(value.id)}>
+                            <Link to={`/album/${value.id}`}>
                                 <img src={value.imageURL}/>
                             </Link>
                         }

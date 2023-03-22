@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import Thermometer from './Thermometer';
 import {SpotifyService} from '../data/Service.ts'
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const TrackPage = (props) => {
-    const trackId = React.useRef(props.id)
+    const trackId = React.useRef(window.location.pathname.substring(7))
     const [track, setTrack] = useState()
     const [audioFeatures, setAudioFeatures] = useState()
 
@@ -22,12 +23,10 @@ const TrackPage = (props) => {
 
     // Use link to route page, see TrackList for ref
 
-    const trackClicked = (id) =>{
-        props.setId(id)
-    }
-
     // check if track and audioFeature exists, see AlbumPage for ref
-
+    const style = {
+        margin: "50px 0px"
+    }
 
 
     // Use .map to loop through array, see CarouselComponent for ref
@@ -40,10 +39,10 @@ const TrackPage = (props) => {
             { track ?
             <div class="row">
                 <div class="col-6">
-                    
+                <Link to="/"><Button variant="outline-primary">Home</Button></Link>
                     <h1>{track.name}</h1>
                     <p>
-                        Track on <Link to="/album" onClick={() => trackClicked(track.album.id)}>{track.album.name}</Link>
+                        Track on <Link to={`/album/${track.album.id}`}>{track.album.name}</Link>
 
                         {/* Track on <a href="http://localhost:4200/album/{{track.album.id}}">{track.album.name}</a> */}
                     </p>
@@ -52,7 +51,7 @@ const TrackPage = (props) => {
                             track.artists.map((value, index) => {
                                 return (
                                     <p>
-                                    Artist: <Link to="/artist" onClick={() => trackClicked(value.id)}>{value.name}</Link>
+                                    Artist: <Link to={`/artist/${value.id}`}>{value.name}</Link>
                                 </p>
                                 )
                             })
@@ -65,11 +64,11 @@ const TrackPage = (props) => {
                         <a class="btn btn-light" role="button" href = "{{track.url}}" target="_blank">Open {track.name} on Spotify</a>
                     </p>
                 </div>
-                <div class="col-6">
+                <div class="col-6" style={style}>
                     {
                         audioFeatures.map((value) => {
                             console.log(value)
-                            return <Thermometer name={value.name} percent= {value.percent}></Thermometer>
+                            return <Thermometer name={value.name} percent= {value.percent} color = {value.color}></Thermometer>
                         })
                     }
                 </div>

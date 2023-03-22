@@ -1,25 +1,10 @@
 import React, {useState} from 'react'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TrackList = (props) => {
     let tracks = props.data
     const [hideArtist, setHideArtist] = useState(props.hideArtist)
     const [hideAlbum, setHideAlbum] = useState(props.hideAlbum)
-
-    const trackClicked = (id) =>{
-        props.setId(id)
-        props.setPageState("track")
-    }
-
-    const artistClicked = (id) => {
-        props.setId(id)
-        props.setPageState("artist")
-    }
-
-    const albumClicked = (id) => {
-        props.setId(id)
-        props.setPageState("album")
-    }
 
     return (
         <div>
@@ -37,15 +22,17 @@ const TrackList = (props) => {
                 <tbody>
                     {
                         tracks.map((value, index) => {
-                            return <tr>
-                            <td>{index + 1}</td>
-                            <td>
-                                <Link to="/track" onClick={() => trackClicked(value.id)}>{value.name}</Link>
-                            </td>
-                            <td>{value.durationStr}</td>
-                            {!hideArtist ? <td><Link to="/artist" onClick={() => artistClicked(value.primaryArtist.id)}>{value.primaryArtist.name}</Link></td> : null}
-                            {!hideAlbum ? <td><Link to="/album" onClick={() => albumClicked(value.album.id)}>{value.album.name}</Link></td> : null}
-                            </tr>
+                            {return (value.category === "track") ? 
+                                    <tr>
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <Link to={`/track/${value.id}`}>{value.name}</Link>
+                                    </td>
+                                    <td>{value.durationStr}</td>
+                                    {!hideArtist ? <td><Link to={`/artist/${value.primaryArtist.id}`}>{value.primaryArtist.name}</Link></td> : null}
+                                    {!hideAlbum ? <td><Link to={`/album/${value.album.id}`}>{value.album.name}</Link></td> : null}
+                                    </tr> : null
+                            }
                         })
                     }
                 </tbody>

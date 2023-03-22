@@ -5,31 +5,35 @@ email: longp2@uci.edu
 email: dkrishan@uci.edu
 UCI id: 53795948
 UCI id: 55236595
-Group 8
+A5 Group 14
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
-20/20
-- 2/2 Communicating with the webserver
-- 3/3 Populating information about the user
-- 4/4 Populating the search component
-- 5/5 Artist page
-- 3/3 Album page
-- 3/3 Track page
+15/15
+- 1/1 Communication with the Webserver
+- 5/5 Spotify Browser Home Page
+- 3/3 Spotify Browser Artist Page
+- 2/2 Spotify Browser Album Pag
+- 2/2 Spotify Browser Track Page
+- 2/2 A readme and demo video which explains how these features were implemented and their design rationale
 
 
 2. How long, in hours, did it take you to complete this assignment?
-5 hours
+12 hours
 
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
-https://getbootstrap.com/docs/4.0/components/carousel/
-https://getbootstrap.com/docs/4.1/components/progress/
-https://stackoverflow.com/questions/12548954/bootstrap-carousel-transitions-and-prev-next-buttons-not-working
-https://angular.io/guide/binding-syntax
-https://angular.io/guide/built-in-directives
-https://stackoverflow.com/questions/45749533/what-is-input-used-for-in-angular
-https://netbasal.com/different-ways-to-pass-inputs-to-a-component-in-angular-4696700ffaa0
+https://www.w3schools.com/react/react_router.asp
+https://legacy.reactjs.org/docs/hooks-intro.html
+https://www.freecodecamp.org/news/react-hooks-fundamentals/
+https://www.w3schools.com/react/react_hooks.asp
+https://react-bootstrap.github.io/components/carousel/
+https://react-bootstrap.github.io/components/progress/
+https://legacy.reactjs.org/docs/faq-ajax.html
+https://stackoverflow.com/questions/60864445/is-there-a-way-to-do-an-api-call-only-once-in-react-functional-component
+https://blog.logrocket.com/usestate-vs-useref/
+https://legacy.reactjs.org/docs/components-and-props.html
+https://ui.dev/react-router-query-strings
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
@@ -43,5 +47,5 @@ Nope
 6. Is there anything special we need to know in order to run your code?
 cd into client and webserver folders
 run npm install for both folders to install dependencies and node_modules folders
-use ng serve --open on client folder to run client
+use npm start on client folder to run client
 use npm start on webserver folder to run server
