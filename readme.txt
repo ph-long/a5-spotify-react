@@ -43,9 +43,24 @@ Philip Long and Devesh Krishan worked on the assignment as partners
 5. Did you add a bonus feature to your submission? If so, what is it and how should we see it?
 Nope
 
+6. Explaining features
+    Communication with the Webserver: We communicated with the webserver in the ./client/data/Service.ts file. 
 
-6. Is there anything special we need to know in order to run your code?
+    Spotify Browser Home Page: The Spotify Browser Home page was implemented in the ./client/component/Home.js with 
+        the search and about components in ./client/component/About.js and ./client/component/Search.js.
+        
+    Spotify Browser Artist Page: The Spotify Browser Artist page was implemented in the ./client/component/ArtistPage.js with 
+        the Carousel component in the ./client/component/CarouselComponent.js.
+
+    Spotify Browser Album Page: The Spotify Browser Album page was implemented in the ./client/component/AlbumPage.js with 
+        the TrackList component in the ./client/component/TraackList.js.
+
+    Spotify Browser Track Page: The Spotify Browser Track page was implemented in the ./client/component/TrackPage.js with 
+        the Thermometer component in the ./client/component/Thermometer.js.
+
+7. Is there anything special we need to know in order to run your code?
 cd into client and webserver folders
 run npm install for both folders to install dependencies and node_modules folders
+add client_secret.json file with a Spotify token to the webserver folder and a new tokens.json
 use npm start on client folder to run client
 use npm start on webserver folder to run server
